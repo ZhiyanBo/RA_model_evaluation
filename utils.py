@@ -110,8 +110,15 @@ def nav_bar_visibility():
 #     # elif df_user['']
 #     return df_user
 
+all_model_questions = []
+for img in os.listdir('static/seed392/original_images'):
+    for i in range(3):
+        for j in range(2):
+            all_model_questions += [f"{img[:-4]}_m{i+1}q{j+1}"]
 
-def match_session_record(df, email):
+def match_session_record(df, email, all_model_questions = all_model_questions):
+    # all_model_questions = ['DX320829_m1q1', 'DX320829_m1q2', 'DX320829_m2q1', 'DX320829_m2q2', 'DX320829_m3q1', 'DX320829_m3q2', 
+    #                         'DX424309_m1q1', 'DX424309_m1q2', 'DX424309_m2q1', 'DX424309_m2q2', 'DX424309_m3q1', 'DX424309_m3q2']
     df_user = df[df['email'] == email].reset_index()
     colnames = df.columns
     # Update new_row
@@ -127,10 +134,15 @@ def match_session_record(df, email):
     st.session_state['eval_all_images'] = ast.literal_eval(st.session_state['eval_all_images'])[0]
     st.session_state['new_row'].loc[0, 'eval_all_images'] = [st.session_state['eval_all_images']]
     # st.write(f"Eval all images: {st.session_state['new_row'].loc[0, 'eval_all_images']}")
-    if df_user['task_done'][0] == 1 or df_user['task_done'][0] == True:
+    if st.session_state['new_row'].loc[0, 'eval_all_images'] == [{'task': False}] and any(key in st.session_state for key in all_model_questions):
+        for k in all_model_questions:
+            if k in st.session_state:
+                del st.session_state[k]
+    elif df_user['task_done'][0] == 1 or df_user['task_done'][0] == True:
         for k in list(st.session_state['eval_all_images'].keys()):
             st.session_state[k] = st.session_state['eval_all_images'][k]
     elif st.session_state['new_row'].loc[0, 'eval_all_images'] != [{'task': False}]:
         for k in list(st.session_state['eval_all_images'].keys()):
             st.session_state[k] = st.session_state['eval_all_images'][k]
+    # st.write(st.session_state)
     return df_user
