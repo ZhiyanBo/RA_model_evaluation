@@ -5,7 +5,7 @@ import base64
 import pathlib
 from pathlib import Path
 # from util import switch_page
-from streamlit_extras.switch_page_button import switch_page 
+# from streamlit_extras.switch_page_button import switch_page 
 from streamlit_gsheets import GSheetsConnection
 import gspread
 from utils import nav_bar_visibility, match_session_record
