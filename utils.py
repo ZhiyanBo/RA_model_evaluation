@@ -1,6 +1,7 @@
 import streamlit as st
 from PIL import Image
 import pathlib
+import os
 from streamlit_gsheets import GSheetsConnection
 import ast
 # from streamlit import _RerunData, _RerunException
