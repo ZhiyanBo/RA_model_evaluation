@@ -13,7 +13,7 @@ options_model = ["Model 1: Whole image",
 options_model_none = ["Model 1: Whole image", 
                       "Model 2: RA-severity based patches", 
                       "Model 3: Joint patches",
-                      "None"]
+                      "None of the models"]
 
 
 model_comparison_questions = [
