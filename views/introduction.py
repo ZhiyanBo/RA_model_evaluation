@@ -344,7 +344,7 @@ st.write('''For each image and model, these details will be provided to facilita
 
 st.write('''
             - Ground truth SvdH score (average of the scores reported by two experienced radiologists) and the model's prediction
-            - A visual explanation of how the model made the prediction in the form of a contribution heatmap (see XAI in the table above) where the regions or patches that contribute more to the prediction are highlighted in the heatmap (shown by the colour bar placed on the right)
+            - A visual explanation of how the model made the prediction in the form of a contribution heatmap (see XAI in the table above) where the regions or patches that contribute more to the prediction, which can be healthy or damaged depending on the sample’s symptom, are highlighted in the heatmap (shown by the colour bar placed on the right)
          ''')
 
 st.write('Please examine both the score and the visual explanation when assessing the models. ')
